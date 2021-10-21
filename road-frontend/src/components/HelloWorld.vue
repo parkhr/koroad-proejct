@@ -7,13 +7,7 @@
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String,
-  },
-  created() {
-    console.log(this.$store);
-    console.log(process.env);
-  },
+  created() {},
 };
 </script>
 
