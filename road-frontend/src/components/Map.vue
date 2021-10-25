@@ -45,7 +45,7 @@ export default {
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
       script.src =
-        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=" +
+        "https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=" +
         process.env.VUE_APP_KAKAO_JAVASCRIPT_KEY;
       document.head.appendChild(script);
     },
@@ -59,7 +59,7 @@ export default {
         level: 4,
       });
 
-      this.map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+      this.map.setMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
     },
   },
 };

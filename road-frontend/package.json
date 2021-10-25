@@ -5,7 +5,8 @@
   "scripts": {
     "serve:production": "vue-cli-service serve --mode production",
     "serve:development": "vue-cli-service serve --mode development",
-    "serve:local": "vue-cli-service serve --mode local"
+    "serve:local": "vue-cli-service serve --mode local",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
