@@ -2,10 +2,10 @@
   <div class="side">
     <div class="top">
       <div class="type">
-        <div>제보</div>
-        <div>사고</div>
-        <div>CCTV</div>
-        <div>날씨</div>
+        <div @click="detail(1)">제보</div>
+        <div @click="detail(2)">사고</div>
+        <div @click="detail(3)">CCTV</div>
+        <div @click="detail(4)">날씨</div>
       </div>
       <input
         class="input-search"
@@ -14,61 +14,36 @@
       />
     </div>
 
-    <div class="detail">
-      <div>제보정보 (YY.MM.DD.HH)</div>
-      <!-- <div>사고정보 (YY.MM.DD.HH)</div>
-      <div>CCTV정보 (YY.MM.DD.HH)</div>
-      <div>날씨정보 (YY.MM.DD.HH)</div> -->
-      <div>도로명</div>
-      <div v-for="content in contents" v-bind:key="content">
-        {{ content }}
-      </div>
-    </div>
+    <!-- <SideDetail v-show="show == 1" /> -->
+    <SideAccidentDetail v-show="show == 2" />
+    <SideCCTVDetail v-show="show == 3" />
+    <!-- <SideWeatherDetail v-show="show == 4" /> -->
   </div>
 </template>
 
 <script>
+// import SideDetail from "../components/SideDetail.vue";
+import SideAccidentDetail from "../components/SideAccidentDetail.vue";
+import SideCCTVDetail from "../components/SideCCTVDetail.vue";
+// import SideWeatherDetail from "../components/SideWeatherDetail.vue";
+
 export default {
   name: "Side",
   created() {},
+  components: {
+    // SideDetail,
+    SideAccidentDetail,
+    SideCCTVDetail,
+    // SideWeatherDetail,
+  },
+  methods: {
+    detail(show) {
+      this.show = show;
+    },
+  },
   data() {
     return {
-      contents: [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-      ],
+      show: 0,
     };
   },
 };
@@ -86,6 +61,7 @@ export default {
 
 .side {
   width: 25%;
+  border: 1px solid black;
 }
 
 .top {
@@ -123,17 +99,5 @@ export default {
 .type > div:hover {
   border-radius: 1.5rem;
   background-color: #0d619c;
-}
-
-.detail {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  height: 600px;
-}
-
-.detail > * {
-  align-self: stretch;
-  text-align: left;
 }
 </style>

@@ -29,9 +29,9 @@ export default {
 
 <style scoped>
 .logo {
-  margin-top: 4rem;
+  margin-top: 1rem;
   margin-left: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .content {
   margin-left: 4rem;
