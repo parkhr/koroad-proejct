@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users.module';
+import { CctvModule } from './cctv/cctv.module';
 import { TypeOrmConfig } from './config/typeorm';
 
 @Module({
@@ -9,6 +10,7 @@ import { TypeOrmConfig } from './config/typeorm';
       useClass: TypeOrmConfig,
     }),
     UsersModule,
+    CctvModule,
   ],
   controllers: [],
   providers: [],
