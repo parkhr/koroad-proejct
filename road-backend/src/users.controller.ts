@@ -8,11 +8,13 @@ export class UsersController {
 
   @Get('1')
   getUsers(): Promise<User[]> {
+    // throw new BadRequestException();
     return this.usersService.findAll();
   }
 
   @Get('2')
   insert() {
+    // throw new NotFoundException();
     return this.usersService.save(new User());
   }
 }

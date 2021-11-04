@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users.module';
 import { CctvModule } from './cctv/cctv.module';
 import { TypeOrmConfig } from './config/typeorm';
+import { APP_FILTER } from '@nestjs/core';
+import { AllExceptionsFilter } from './exception.filter';
 
 @Module({
   imports: [
@@ -13,6 +15,11 @@ import { TypeOrmConfig } from './config/typeorm';
     CctvModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
+    },
+  ],
 })
 export class AppModule {}
