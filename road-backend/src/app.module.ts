@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users.module';
-import { CctvModule } from './cctv/cctv.module';
 import { TypeOrmConfig } from './config/typeorm';
 import { APP_FILTER } from '@nestjs/core';
-import { AllExceptionsFilter } from './exception.filter';
+import { AllExceptionsFilter } from './filter/exception.filter';
 
 @Module({
   imports: [
@@ -12,7 +11,6 @@ import { AllExceptionsFilter } from './exception.filter';
       useClass: TypeOrmConfig,
     }),
     UsersModule,
-    CctvModule,
   ],
   controllers: [],
   providers: [
