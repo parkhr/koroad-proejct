@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { UserDto } from './user.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
 
@@ -12,9 +13,9 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get('2')
-  insert() {
+  @Post('2')
+  insert(@Body() userDto: UserDto): Promise<UserDto> {
     // throw new NotFoundException();
-    return this.usersService.save(new User());
+    return this.usersService.save(userDto);
   }
 }

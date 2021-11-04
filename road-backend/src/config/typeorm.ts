@@ -14,7 +14,7 @@ export class TypeOrmConfig implements TypeOrmOptionsFactory {
       password: 'root',
       database: 'test',
       entities: [User, Cctv],
-      synchronize: false,
+      synchronize: true,
     };
   }
 }

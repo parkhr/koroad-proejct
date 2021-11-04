@@ -1,11 +1,11 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { UserDto } from './user.dto';
 
 @Entity()
 export class User {
-  constructor() {
-    this.firstName = 'first';
-    this.lastName = 'last';
-    this.isActive = true;
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
 
   @PrimaryGeneratedColumn()
@@ -19,4 +19,8 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+  static createUser(userDto: UserDto) {
+    return new this(userDto.firstName, userDto.lastName);
+  }
 }
