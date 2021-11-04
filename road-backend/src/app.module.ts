@@ -4,6 +4,7 @@ import { UsersModule } from './users.module';
 import { TypeOrmConfig } from './config/typeorm';
 import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { AllExceptionsFilter } from './filter/exception.filter';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { AllExceptionsFilter } from './filter/exception.filter';
     }),
     UsersModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [
     {
       provide: APP_FILTER,
