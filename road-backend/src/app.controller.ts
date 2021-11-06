@@ -1,12 +1,34 @@
-import { Controller, Get, HttpCode } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpCode,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
+import { AuthService } from './auth/auth.service';
+import { JwtAuthGuard } from './guard/jwt-auth.guard';
+import { LocalAuthGuard } from './guard/local-auth-guard';
 
 @Controller()
 export class AppController {
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   @Get('/favicon.ico')
   @HttpCode(204)
   index(): void {
     return;
+  }
+
+  @UseGuards(LocalAuthGuard)
+  @Post('auth/login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
   }
 }
