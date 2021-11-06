@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <MainPage />
+    <Login />
+    <!-- <MainPage /> -->
   </div>
 </template>
 
 <script>
-import MainPage from "./page/MainPage.vue";
+import Login from "./components/Login.vue";
+// import MainPage from "./page/MainPage.vue";
 
 export default {
   name: "App",
   components: {
-    MainPage,
+    // MainPage,
+    Login,
   },
+  created() {},
 };
 </script>
 
