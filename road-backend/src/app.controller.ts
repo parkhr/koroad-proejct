@@ -9,6 +9,7 @@ import {
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './guard/jwt-auth.guard';
 import { LocalAuthGuard } from './guard/local-auth-guard';
+import { SocialAuthGuard } from './guard/social-auth.guard';
 
 @Controller()
 export class AppController {
@@ -35,5 +36,11 @@ export class AppController {
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;
+  }
+
+  @UseGuards(SocialAuthGuard)
+  @Get('social')
+  async socialLogin(@Request() req) {
+    return this.authService.login(req.user);
   }
 }
