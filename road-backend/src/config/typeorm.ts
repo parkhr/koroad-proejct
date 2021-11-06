@@ -8,10 +8,10 @@ export class TypeOrmConfig implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       type: 'mysql',
-      host: 'localhost',
+      host: process.env.DATABASE_HOST || 'localhost',
       port: 3306,
-      username: 'root',
-      password: 'root',
+      username: process.env.DATABASE_USER || '1',
+      password: process.env.DATABASE_PASSWORD || '1',
       database: 'test',
       entities: [User, Cctv],
       synchronize: true,
