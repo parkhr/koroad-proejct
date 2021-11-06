@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { Cctv } from 'src/cctv/cctv.entity';
-import { User } from 'src/user.entity';
+import { User } from 'src/user/user.entity';
 
 @Injectable()
 export class TypeOrmConfig implements TypeOrmOptionsFactory {
