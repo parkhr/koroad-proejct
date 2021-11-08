@@ -39,7 +39,7 @@ export class AppController {
   }
 
   @UseGuards(SocialAuthGuard)
-  @Get('social')
+  @Post('social')
   async socialLogin(@Request() req) {
     return this.authService.login(req.user);
   }
