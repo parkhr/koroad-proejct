@@ -3,24 +3,24 @@ import { UserDto } from './user.dto';
 
 @Entity()
 export class User {
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
+  constructor(email: string, nickname: string) {
+    this.email = email;
+    this.nickname = nickname;
   }
 
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  firstName: string;
+  email: string;
 
   @Column()
-  lastName: string;
+  nickname: string;
 
   @Column({ default: true })
   isActive: boolean;
 
   static createUser(userDto: UserDto) {
-    return new this(userDto.firstName, userDto.lastName);
+    return new this(userDto.email, userDto.nickname);
   }
 }

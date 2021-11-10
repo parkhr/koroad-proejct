@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './guard/jwt-auth.guard';
-import { LocalAuthGuard } from './guard/local-auth-guard';
+// import { LocalAuthGuard } from './guard/local-auth-guard';
 import { SocialAuthGuard } from './guard/social-auth.guard';
 
 @Controller()
@@ -26,11 +26,11 @@ export class AppController {
     return;
   }
 
-  @UseGuards(LocalAuthGuard)
-  @Post('auth/login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
-  }
+  // @UseGuards(LocalAuthGuard)
+  // @Post('auth/login')
+  // async login(@Request() req) {
+  //   return this.authService.login(req.user);
+  // }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
@@ -41,6 +41,8 @@ export class AppController {
   @UseGuards(SocialAuthGuard)
   @Post('social')
   async socialLogin(@Request() req) {
+    console.log('--------------------------');
+    console.log(req.user);
     return this.authService.login(req.user);
   }
 }

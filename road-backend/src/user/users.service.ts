@@ -11,25 +11,6 @@ export class UsersService {
     private usersRepository: UserRepository,
   ) {}
 
-  private readonly users = [
-    {
-      id: 1,
-      firstName: 'john',
-      lastName: 'changeme',
-      isActive: true,
-    },
-    {
-      id: 2,
-      firstName: 'maria',
-      lastName: 'guess',
-      isActive: true,
-    },
-  ];
-
-  async findOne(firstName: string): Promise<User | undefined> {
-    return this.users.find((user) => user.firstName === firstName);
-  }
-
   findAll(): Promise<User[]> {
     return this.usersRepository.find();
   }

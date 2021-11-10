@@ -2,10 +2,10 @@ import { IsString } from 'class-validator';
 
 export class UserDto {
   @IsString()
-  firstName: string;
+  nickname: string;
 
   @IsString()
-  lastName: string;
+  email: string;
 
   isActive: boolean;
 }
