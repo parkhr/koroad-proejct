@@ -41,8 +41,6 @@ export class AppController {
   @UseGuards(SocialAuthGuard)
   @Post('social')
   async socialLogin(@Request() req) {
-    console.log('--------------------------');
-    console.log(req.user);
     return this.authService.login(req.user);
   }
 }

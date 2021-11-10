@@ -15,6 +15,7 @@ export class TypeOrmConfig implements TypeOrmOptionsFactory {
       database: 'test',
       entities: [User, Cctv],
       synchronize: true,
+      logging: ["query"]
     };
   }
 }
