@@ -22,7 +22,8 @@ export default {
           code: this.$route.query.code,
         })
         .then((res) => {
-          console.log(res);
+          this.$cookies.set("accessToken", res.data.access_token);
+          this.$router.push("/");
         })
         .catch((err) => {
           console.log(err);

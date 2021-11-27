@@ -1,7 +1,6 @@
 <template>
   <div class="login">
-    hello login
-    <a @click="login()">login</a>
+    <a @click="login()">카카오로 로그인하기</a>
   </div>
 </template>
 <script>

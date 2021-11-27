@@ -1,6 +1,7 @@
 <template>
   <div class="hello sb-nav-fixed">
     hello world
+    <div @click="login()">로그인 하기</div>
   </div>
 </template>
 
@@ -8,6 +9,11 @@
 export default {
   name: "HelloWorld",
   created() {},
+  methods: {
+    login() {
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 

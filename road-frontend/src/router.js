@@ -6,7 +6,7 @@ import KakaoRedirect from "./components/KakaoRedirect";
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/foo", component: HelloWorld },
+  { path: "/", component: HelloWorld },
   { path: "/login", component: Login },
   { path: "/kakao/oauth", component: KakaoRedirect },
 ];
