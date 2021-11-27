@@ -29,7 +29,6 @@ export class AuthService {
           isActive: true,
         });
 
-        console.log(savedUser);
         payload = {
           id: savedUser.id,
           email: savedUser.email,
