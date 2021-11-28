@@ -3,13 +3,13 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   state: {
-    count: 0,
+    user: null,
   },
   mutations: {
-    increment(state) {
-      state.count++;
+    setUser: (state, payload) => {
+      state.user = payload;
     },
   },
 });

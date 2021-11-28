@@ -7,6 +7,10 @@ import { UserRepository } from './user.repository';
 export class UsersService {
   constructor(private usersRepository: UserRepository) {}
 
+  findOne(id: number): Promise<User | undefined> {
+    return this.usersRepository.findOne(id);
+  }
+
   findOneByEmail(email: string): Promise<User | undefined> {
     return this.usersRepository.findOneByEmail(email);
   }

@@ -13,9 +13,10 @@ export default {
       /**
        * 서버 통신
        * 1. kakao code 전송
-       * 2. response jwttoken, userinfo
-       * 3. jwttoken 는 어디에 저장할까?
-       * 4. 로그인 완료 페이지로 routing
+       * 2. response jwttoken
+       * 3. get userinfo
+       * 4. jwttoken 는 어디에 저장할까? = cookie
+       * 5. 로그인 완료 페이지로 routing
        */
       axios
         .post("http://localhost:3000/social", {
@@ -23,11 +24,25 @@ export default {
         })
         .then((res) => {
           this.$cookies.set("accessToken", res.data.access_token);
-          this.$router.push("/");
+          axios
+            .get("http://localhost:3000/user", {
+              headers: {
+                Authorization: `Bearer ${this.$cookies.get("accessToken")}`,
+              },
+            })
+            .then((res) => {
+              this.$store.commit("setUser", res.data);
+            })
+            .then(() => {
+              this.$router.push("/");
+            })
+            .catch(() => {
+              throw Error();
+            });
         })
-        .catch((err) => {
-          console.log(err);
-          alert("err ..");
+        .catch(() => {
+          alert("로그인에 실패했습니다. 다시 시도해주세요.");
+          this.$router.push("/login");
         });
     }
   },
