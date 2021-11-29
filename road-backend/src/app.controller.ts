@@ -6,6 +6,7 @@ import {
   Post,
   Request,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiOkResponse,
@@ -17,6 +18,7 @@ import {
 import { AuthService } from './auth/auth.service';
 // import { LocalAuthGuard } from './guard/local-auth-guard';
 import { SocialAuthGuard } from './guard/social-auth.guard';
+import { TransformInterceptor } from './interceptor/transform.interceptor';
 
 @ApiTags('app')
 @Controller()
@@ -41,5 +43,11 @@ export class AppController {
   })
   async socialLogin(@Request() req, @Param('code') code: string) {
     return this.authService.login(req.user);
+  }
+
+  @Get('test')
+  async test() {
+    const result = 'zz';
+    return { message: 'success', result };
   }
 }

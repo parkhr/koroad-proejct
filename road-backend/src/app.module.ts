@@ -4,9 +4,10 @@ import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './user/users.module';
 import { TypeOrmConfig } from './config/typeorm';
-import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { AllExceptionsFilter } from './filter/exception.filter';
 import { AppController } from './app.controller';
+import { TransformInterceptor } from './interceptor/transform.interceptor';
 
 @Module({
   imports: [
@@ -26,6 +27,10 @@ import { AppController } from './app.controller';
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformInterceptor,
     },
   ],
 })
